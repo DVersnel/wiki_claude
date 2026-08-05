@@ -1,0 +1,1 @@
+php "C:\Users\All Users\ComposerSetup\bin\composer.phar" update

@@ -1,0 +1,34 @@
+User:
+getAuthors(): array #retrieve all usernames that have uploaded an article
+getUserByEmail(string $email): User|False #Retrieve user object by email
+
+User_crud
+create_user(array $data) # registration, write username, password, email to db
+update_user(array $data) # update username or password
+delete_user(int $id) 
+
+Article:
+getArticleById(int $id): Article 
+getArticlesByUserId(int $user_id): array #retrieve all articles of a specific user, for author page
+getArticlesByUserIdAndTagId(array $user_ids, array $tag_ids): array|False #Search result, retrieves articles matching a selection of users and tags
+getMostRecentArticles(int $number): array # Retrieve most recently edited or created articles, amount chosen by user
+
+Article_crud
+createArticle(array $data) #array contains article text, title, image, username
+updateArticle(array $data)
+deleteArticle(int $id)
+
+Tags:
+getTags(): array # retrieve all tag names
+getTagsByArticleId(int $id): array
+
+Tags_crud:
+createTag(string $name)
+
+Ratings:
+getAverageRatingByArticleId(int $id): float
+getVoteCount(int $id): int # amount of ratings left on an article
+
+Ratings_crud
+createRating(array $data) #array contains article_id and user_id
+updateRating(array $data) #array contains article_id and user_id
