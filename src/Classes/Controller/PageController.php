@@ -111,7 +111,40 @@ class PageController
                 }
                 break;
             case 'edit':
-
+                if (empty($_SESSION['logged_in']) || !($_SESSION['user'] instanceof User))
+                {
+                    $this->response['page'] = 'login';
+                    $this->response['error_message'] = 'Error: You must be logged in to save an article';
+                    break;
+                }
+                $article_manager = new ArticleManager();
+                $result = $article_manager->saveArticle(
+                    (int)$this->getPostVar('id', '0'),
+                    $_SESSION['user']->getId(),
+                    $this->getPostVar('title'),
+                    $this->getPostVar('text'),
+                    $this->getPostVar('code'),
+                    array_map('intval', $_POST['tags'] ?? []),
+                    $_FILES['image'] ?? null
+                );
+                if ($result['success']) {
+                    $this->response['page'] = 'my_articles';
+                    $this->response['success_message'] = $result['message'];
+                } else {
+                    $this->response['page'] = 'edit';
+                    $this->response['error_message'] = $result['message'];
+                }
+                break;
+            case 'delete_article':
+                if (empty($_SESSION['logged_in']) || !($_SESSION['user'] instanceof User))
+                {
+                    $this->response['page'] = 'login';
+                    $this->response['error_message'] = 'Error: You must be logged in';
+                    break;
+                }
+                (new ArticleManager())->deleteArticleForUser((int)$this->getPostVar('id', '0'), $_SESSION['user']->getId());
+                $this->response['page'] = 'my_articles';
+                $this->response['success_message'] = 'Article deleted';
                 break;
             case 'search':
                 $this->response['page'] = 'search';
@@ -138,7 +171,10 @@ class PageController
                     $this->response['page'] = 'register';
                     break;
                 case 'edit':
-                    $this->response['page'] = 'edit';
+                    $this->response['page'] = empty($_SESSION['logged_in']) ? 'login' : 'edit';
+                    break;
+                case 'my_articles':
+                    $this->response['page'] = empty($_SESSION['logged_in']) ? 'login' : 'my_articles';
                     break;
                 case 'article':
                     $this->response['page'] = 'article';
@@ -177,10 +213,29 @@ class PageController
             case 'contact':
             case 'login':
             case 'register':
-            case 'edit':
                 $this->response['title'] = $page_data_repo->getPageTitle($this->response['page']);
                 $this->response['description'] = $page_data_repo->getPageDescription($this->response['page']);
                 $this->response['content'] = $page_data_repo->getFormContent($this->response['page']);
+                break;
+
+            case 'edit':
+                if (!($_SESSION['user'] instanceof User)) {
+                    throw new \Exception('Error: You must be logged in to edit an article');
+                }
+                $article_manager = new ArticleManager();
+                $this->response['title'] = $page_data_repo->getPageTitle('edit');
+                $this->response['description'] = $page_data_repo->getPageDescription('edit');
+                $this->response['content'] = $article_manager->getEditFormContent((int)($this->response['id'] ?? 0), $_SESSION['user']->getId());
+                break;
+
+            case 'my_articles':
+                if (!($_SESSION['user'] instanceof User)) {
+                    throw new \Exception('Error: You must be logged in to view your articles');
+                }
+                $article_manager = new ArticleManager();
+                $this->response['title'] = $page_data_repo->getPageTitle('my_articles');
+                $this->response['description'] = $page_data_repo->getPageDescription('my_articles');
+                $this->response['content'] = $article_manager->getProfileContent($_SESSION['user']->getId());
                 break;
 
             case 'article':
@@ -229,6 +284,7 @@ class PageController
             case 'login':
             case 'register':
             case 'edit':
+            case 'my_articles':
             case 'article':
             case 'search':
                 $elements = $element_factory->createItem($this->response);

@@ -8,10 +8,12 @@ use MDJ\View\ListItems\ListItem;
 use MDJ\View\ListItems\LinkListItem;
 use MDJ\View\Form;
 use MDJ\View\Forms\SearchForm;
+use MDJ\View\Forms\ArticleForm;
 use MDJ\View\Paragraph;
 use MDJ\View\Code;
 use MDJ\View\Infopanel;
 use MDJ\View\ArticleContentBox;
+use MDJ\View\NewArticleButton;
 use MDJ\View\Titles\ArticleTitle;
 use MDJ\View\Titles\ArticleTitleLink;
 use MDJ\Interfaces\iFactory;
@@ -50,6 +52,11 @@ class ContentFactory implements iFactory
             case 'form':
                 $form_collection = new Collection($content_item_info['form_fields'], new FormFieldFactory());
                 return new Form($form_collection->getItems());
+            case 'article_form':
+                $form_collection = new Collection($content_item_info['form_fields'], new FormFieldFactory());
+                return new ArticleForm($content_item_info['article_id'], $form_collection->getItems(), $content_item_info['image'] ?? '');
+            case 'new_article_button':
+                return new NewArticleButton();
             case 'search_form':
                 $author_collection = new Collection($content_item_info['authors'], new FormFieldFactory());
                 $tag_collection = new Collection($content_item_info['tags'], new FormFieldFactory());

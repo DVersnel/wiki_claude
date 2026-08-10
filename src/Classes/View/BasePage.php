@@ -34,6 +34,7 @@ class BasePage implements iView
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 			<script src="src/jquery.js"></script>
 			<script src="Scripts/Ratings.js"></script>
+			<script src="Scripts/TagsSelect.js"></script>
 			</head>';
 	}
 

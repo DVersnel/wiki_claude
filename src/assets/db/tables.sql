@@ -274,7 +274,7 @@ CREATE TABLE `_page_footer_logo_path` (
 --
 
 INSERT INTO `_page_footer_logo_path` (`logo_path`, `footer`) VALUES
-('MDJImagesmdj_logo.png', 0);
+('Images/mdj_logo.png', 0);
 
 -- --------------------------------------------------------
 
@@ -299,7 +299,8 @@ INSERT INTO `_page_title_description` (`page`, `page_title`, `page_description`)
 ('login', 'Login', ''),
 ('register', 'Register', ''),
 ('edit', 'Edit Article', ''),
-('search', 'Search', 'Search articles by author and tag.');
+('search', 'Search', 'Search articles by author and tag.'),
+('my_articles', 'My Articles', 'Manage the articles you have written.');
 --
 -- Indexes for dumped tables
 --

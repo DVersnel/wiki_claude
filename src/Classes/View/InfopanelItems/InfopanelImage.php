@@ -15,11 +15,12 @@ class InfopanelImage implements iView
 
     public function show()
     {
-    
         echo '<div class="card mb-3">';
         echo '<div class="card-body">';
         echo '<div class="infopanel-image mb-3 justify-content-center d-flex">';
-        echo '<img src="' . $this->image . '" class="img-fluid">';
+        echo '<img src="' . htmlspecialchars($this->image) . '" class="img-fluid">';
+        echo '</div>';
+        echo '</div>';
         echo '</div>';
     }
 }

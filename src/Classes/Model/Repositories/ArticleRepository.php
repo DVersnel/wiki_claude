@@ -131,7 +131,8 @@ class ArticleRepository extends BaseRepository implements iArticleRepository
 
     // Add a new article to the database with its provided tags
     // Input: $article; Article object with article data $tagIds; array of associated tag IDs
-    public function createArticle(Article $article, array $tag_ids): void
+    // Output: New article's ID, or false on failure
+    public function createArticle(Article $article, array $tag_ids): int|false
     {
         $params = (new QueryParams())
             ->add('name', $article->name, false)
@@ -149,9 +150,15 @@ class ArticleRepository extends BaseRepository implements iArticleRepository
             $params
         );
 
+        if ($article_id === false) {
+            return false;
+        }
+
         foreach ($tag_ids as $tag_id) {
             $this->addTagToArticle($article_id, $tag_id);
         }
+
+        return $article_id;
     }
 
     // Add a tag to an existing article

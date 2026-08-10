@@ -6,6 +6,8 @@ use MDJ\View\InfopanelItems\InfopanelImage;
 use MDJ\View\InfopanelItems\InfopanelTextBox;
 use MDJ\View\InfopanelItems\InfopanelRating;
 use MDJ\View\InfopanelItems\InfopanelPdfButton;
+use MDJ\View\InfopanelItems\InfopanelEditButton;
+use MDJ\View\InfopanelItems\InfopanelDeleteButton;
 use MDJ\Interfaces\iFactory;
 
 
@@ -26,6 +28,12 @@ class InfopanelFactory implements iFactory
 
             case 'pdf_download':
                 return new InfopanelPdfButton($infopanel_item_info['article_id']);
+
+            case 'edit_button':
+                return new InfopanelEditButton($infopanel_item_info['article_id']);
+
+            case 'delete_button':
+                return new InfopanelDeleteButton($infopanel_item_info['article_id']);
 
             default:
                 throw new \Exception('Unknown infopanel item type: ' . $infopanel_item_info['type']);

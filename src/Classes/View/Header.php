@@ -54,7 +54,9 @@ class Header implements iView
 
     protected function showLogo()
     {
-        echo '<a class="navbar-brand" href="test.php?page=home" style="font-size: 20px;">Logo</a></div>';
+        echo '<a class="navbar-brand" href="' . \Config::BASEURL . '?page=home">
+                <img src="' . htmlspecialchars($this->logo) . '" alt="Logo" style="height: 40px;">
+              </a></div>';
     }
 
     protected function showEmptyColumn()

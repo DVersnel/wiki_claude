@@ -43,6 +43,7 @@ class ElementFactory implements iElementFactory
                 break;
 
             case 'home':
+            case 'my_articles':
                 $content_factory = new ContentFactory();
                 $article_items = new Collection($page_info['content'] ?? [], $content_factory);
                 $elements[] = new PageTitle($page_info['title']);
