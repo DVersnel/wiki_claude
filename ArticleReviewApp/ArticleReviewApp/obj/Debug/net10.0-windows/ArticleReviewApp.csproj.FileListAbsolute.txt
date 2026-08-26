@@ -165,3 +165,7 @@ C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\bin\Debug\net10.0-
 C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\bin\Debug\net10.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\bin\Debug\net10.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
 C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\bin\Debug\net10.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\xampp\htdocs\wiki_claude\ArticleReviewApp\articlereviewapp\obj\Debug\net10.0-windows\ArticleReviewApp.sourcelink.json
+C:\xampp\htdocs\wiki_claude\ArticleReviewApp\articlereviewapp\obj\Debug\net10.0-windows\Views\UserControls\MenuBar.baml
+C:\xampp\htdocs\wiki_claude\ArticleReviewApp\articlereviewapp\obj\Debug\net10.0-windows\Views\UserControls\MenuBar.g.cs
+C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\obj\Debug\net10.0-windows\GeneratedInternalTypeHelper.g.cs
