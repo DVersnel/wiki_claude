@@ -24,7 +24,7 @@
                 <ColumnDefinition Width="70*" />
             </Grid.ColumnDefinitions>
 
-            <Rectangle Grid.Column="1" Fill="blue" />
+            <TextBlock Grid.Column="1" Text="{Binding ArticleText}" />
         </Grid>
     </Grid>
 </Window>

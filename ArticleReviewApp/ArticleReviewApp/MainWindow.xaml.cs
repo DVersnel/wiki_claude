@@ -19,7 +19,9 @@ public partial class MainWindow : Window
 {
     public MainWindow()
     {
+        var vm = new MainWindowViewModel();
+        DataContext = vm;
         InitializeComponent();
-        
+        Loaded += async (_, _) => await vm.LoadArticle(1);
     }
 }

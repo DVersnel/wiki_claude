@@ -1,9 +1,0 @@
-using System.Windows;
-
-namespace ArticleReviewApp
-{
-    public partial class MainWindowViewModel
-    {
-        
-    }
-}
