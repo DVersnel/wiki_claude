@@ -169,3 +169,7 @@ C:\xampp\htdocs\wiki_claude\ArticleReviewApp\articlereviewapp\obj\Debug\net10.0-
 C:\xampp\htdocs\wiki_claude\ArticleReviewApp\articlereviewapp\obj\Debug\net10.0-windows\Views\UserControls\MenuBar.baml
 C:\xampp\htdocs\wiki_claude\ArticleReviewApp\articlereviewapp\obj\Debug\net10.0-windows\Views\UserControls\MenuBar.g.cs
 C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\obj\Debug\net10.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\obj\Debug\net10.0-windows\Views\UserControls\ArticleEditorPanel.g.cs
+C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\obj\Debug\net10.0-windows\Views\UserControls\ArticleListPanel.g.cs
+C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\obj\Debug\net10.0-windows\Views\UserControls\ArticleEditorPanel.baml
+C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\obj\Debug\net10.0-windows\Views\UserControls\ArticleListPanel.baml

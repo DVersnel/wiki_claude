@@ -60,6 +60,11 @@ public partial class AppDbContext : DbContext
                 .HasMaxLength(60)
                 .IsUnicode(false)
                 .HasColumnName("name");
+            entity.Property(e => e.Status)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasDefaultValue("Pending")
+                .HasColumnName("status");
             entity.Property(e => e.Text)
                 .IsUnicode(false)
                 .HasColumnName("text");

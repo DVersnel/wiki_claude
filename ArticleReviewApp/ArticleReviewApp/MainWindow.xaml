@@ -12,7 +12,7 @@
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
+            <RowDefinition Height="20" />
             <RowDefinition Height="*" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
@@ -24,7 +24,8 @@
                 <ColumnDefinition Width="70*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="1" Text="{Binding ArticleText}" />
+            <UserControls:ArticleListPanel Grid.Column="0" />
+            <UserControls:ArticleEditorPanel Grid.Column="1" />
         </Grid>
     </Grid>
 </Window>

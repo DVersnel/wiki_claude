@@ -1,0 +1,24 @@
+<UserControl x:Class="ArticleReviewApp.Views.UserControls.ArticleListPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ArticleReviewApp.Views.UserControls"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="300">
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="8">
+            <TextBox x:Name="SearchTextBox" Width="180" />
+            <Button x:Name="SearchButton" Content="Search" Width="70" Margin="8,0,0,0" />
+        </StackPanel>
+
+        <ListView x:Name="ArticleListView" Margin="8,0,8,8">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Title" Width="150" />
+                    <GridViewColumn Header="Author" Width="90" />
+                    <GridViewColumn Header="Last Edit" Width="90" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </DockPanel>
+</UserControl>

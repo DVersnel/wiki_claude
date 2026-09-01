@@ -17,6 +17,8 @@ public partial class Article
 
     public int UserId { get; set; }
 
+    public string Status { get; set; } = null!;
+
     public DateTime LastEdit { get; set; }
 
     public virtual ICollection<Image> Images { get; set; } = new List<Image>();

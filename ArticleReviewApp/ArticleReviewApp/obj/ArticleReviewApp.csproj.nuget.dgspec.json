@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\xampp\\htdocs\\wiki_claude\\articlereviewapp\\articlereviewapp\\ArticleReviewApp.csproj": {}
+    "C:\\xampp\\htdocs\\wiki_claude\\ArticleReviewApp\\ArticleReviewApp\\ArticleReviewApp.csproj": {}
   },
   "projects": {
-    "C:\\xampp\\htdocs\\wiki_claude\\articlereviewapp\\articlereviewapp\\ArticleReviewApp.csproj": {
+    "C:\\xampp\\htdocs\\wiki_claude\\ArticleReviewApp\\ArticleReviewApp\\ArticleReviewApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\xampp\\htdocs\\wiki_claude\\articlereviewapp\\articlereviewapp\\ArticleReviewApp.csproj",
+        "projectUniqueName": "C:\\xampp\\htdocs\\wiki_claude\\ArticleReviewApp\\ArticleReviewApp\\ArticleReviewApp.csproj",
         "projectName": "ArticleReviewApp",
-        "projectPath": "C:\\xampp\\htdocs\\wiki_claude\\articlereviewapp\\articlereviewapp\\ArticleReviewApp.csproj",
+        "projectPath": "C:\\xampp\\htdocs\\wiki_claude\\ArticleReviewApp\\ArticleReviewApp\\ArticleReviewApp.csproj",
         "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-        "outputPath": "C:\\xampp\\htdocs\\wiki_claude\\articlereviewapp\\articlereviewapp\\obj\\",
+        "outputPath": "C:\\xampp\\htdocs\\wiki_claude\\ArticleReviewApp\\ArticleReviewApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config"
