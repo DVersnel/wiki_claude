@@ -3728,11 +3728,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\xampp\\htdocs\\wiki_claude\\articlereviewapp\\articlereviewapp\\ArticleReviewApp.csproj",
+      "projectUniqueName": "C:\\xampp\\htdocs\\wiki_claude\\ArticleReviewApp\\articlereviewapp\\ArticleReviewApp.csproj",
       "projectName": "ArticleReviewApp",
-      "projectPath": "C:\\xampp\\htdocs\\wiki_claude\\articlereviewapp\\articlereviewapp\\ArticleReviewApp.csproj",
+      "projectPath": "C:\\xampp\\htdocs\\wiki_claude\\ArticleReviewApp\\articlereviewapp\\ArticleReviewApp.csproj",
       "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-      "outputPath": "C:\\xampp\\htdocs\\wiki_claude\\articlereviewapp\\articlereviewapp\\obj\\",
+      "outputPath": "C:\\xampp\\htdocs\\wiki_claude\\ArticleReviewApp\\articlereviewapp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -3805,7 +3805,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

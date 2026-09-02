@@ -1,19 +1,19 @@
 ﻿ArticleReviewApp
-1.0.0.0
+
 
 winexe
 C#
 .cs
-C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\obj\Debug\net10.0-windows\
+C:\xampp\htdocs\wiki_claude\ArticleReviewApp\articlereviewapp\obj\Debug\net10.0-windows\
 ArticleReviewApp
 none
 false
 TRACE;DEBUG;NET;NET10_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NET10_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-C:\xampp\htdocs\wiki_claude\ArticleReviewApp\ArticleReviewApp\App.xaml
+C:\xampp\htdocs\wiki_claude\ArticleReviewApp\articlereviewapp\App.xaml
 4614634397
 
-3193975312
-486-1391961546
+24-711693369
+243-1194053595
 MainWindow.xaml;Views\UserControls\ArticleEditorPanel.xaml;Views\UserControls\ArticleListPanel.xaml;Views\UserControls\MenuBar.xaml;
 
 False

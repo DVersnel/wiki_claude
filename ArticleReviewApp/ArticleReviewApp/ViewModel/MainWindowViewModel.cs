@@ -23,6 +23,11 @@ namespace ArticleReviewApp
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ArticleDescription)));
         }
 
+        public async Task LoadAllArticles()
+        {
+            await _repo.GetAllAsync();
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
     }
 } 

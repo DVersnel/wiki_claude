@@ -14,9 +14,9 @@
         <ListView x:Name="ArticleListView" Margin="8,0,8,8">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Title" Width="150" />
-                    <GridViewColumn Header="Author" Width="90" />
-                    <GridViewColumn Header="Last Edit" Width="90" />
+                    <GridViewColumn Header="Title" Width="150" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Author" Width="90" DisplayMemberBinding="{Binding User}"/>
+                    <GridViewColumn Header="Last Edit" Width="90" DisplayMemberBinding="{Binding LastEdit}"/>
                 </GridView>
             </ListView.View>
         </ListView>
