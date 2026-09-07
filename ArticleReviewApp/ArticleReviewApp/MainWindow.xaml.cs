@@ -22,6 +22,16 @@ public partial class MainWindow : Window
         var vm = new MainWindowViewModel();
         DataContext = vm;
         InitializeComponent();
-        Loaded += async (_, _) => await vm.LoadArticle(1);
+        Loaded += async (_, _) =>
+        {
+            try
+            {
+                await vm.LoadArticle(1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Failed to load article");
+            }
+        };
     }
 }

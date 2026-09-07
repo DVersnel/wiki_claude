@@ -1,5 +1,6 @@
 using ArticleReviewApp.Data;
 using ArticleReviewApp.Models;
+using ArticleReviewApp.Models.Dtos;
 using Microsoft.EntityFrameworkCore;
 
 namespace ArticleReviewApp.Repositories;
@@ -12,6 +13,22 @@ public class ArticleRepo
         return await db.Articles
             .Include(a => a.User)
             .OrderBy(a => a.Name)
+            .ToListAsync();
+    }
+
+    public async Task<List<ArticleSummary>> GetAllSummariesAsync()
+    {
+        using var db = DbContextFactory.CreateDbContext();
+        return await db.Articles
+            .OrderBy(a => a.Name)
+            .Select(a => new ArticleSummary
+            {
+                Id = a.Id,
+                Name = a.Name,
+                AuthorName = a.User.Name,
+                LastEdit = a.LastEdit,
+                Status = a.Status
+            })
             .ToListAsync();
     }
 
