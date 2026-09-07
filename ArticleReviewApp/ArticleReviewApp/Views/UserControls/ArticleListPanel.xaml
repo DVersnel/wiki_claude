@@ -11,12 +11,15 @@
             <Button x:Name="SearchButton" Content="Search" Width="70" Margin="8,0,0,0" />
         </StackPanel>
 
-        <ListView x:Name="ArticleListView" Margin="8,0,8,8">
+        <ListView x:Name="ArticleListView" Margin="8,0,8,8"
+            ItemsSource="{Binding ArticleSummaries}"
+            SelectionChanged="ArticleListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Title" Width="150" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Author" Width="90" DisplayMemberBinding="{Binding User}"/>
+                    <GridViewColumn Header="Author" Width="90" DisplayMemberBinding="{Binding AuthorName}"/>
                     <GridViewColumn Header="Last Edit" Width="90" DisplayMemberBinding="{Binding LastEdit}"/>
+                    <GridViewColumn Header="Status" Width="90" DisplayMemberBinding="{Binding Status}"/>
                 </GridView>
             </ListView.View>
         </ListView>

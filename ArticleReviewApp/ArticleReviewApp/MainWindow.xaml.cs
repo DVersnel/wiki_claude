@@ -26,11 +26,11 @@ public partial class MainWindow : Window
         {
             try
             {
-                await vm.LoadArticle(1);
+                await vm.LoadAllArticleSummaries();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Failed to load article");
+                MessageBox.Show(ex.ToString(), "Failed to load articles");
             }
         };
     }

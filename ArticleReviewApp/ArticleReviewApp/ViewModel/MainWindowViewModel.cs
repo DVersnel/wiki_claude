@@ -1,6 +1,8 @@
 using System.Windows;
 using System.ComponentModel;
 using ArticleReviewApp.Repositories;
+using System.Collections.ObjectModel;
+using ArticleReviewApp.Models.Dtos;
 
 namespace ArticleReviewApp
 {
@@ -10,7 +12,9 @@ namespace ArticleReviewApp
         public string ArticleTitle { get; set; } = string.Empty;
         public string ArticleDescription { get; set; } = string.Empty;
 
-        private ArticleRepo _repo =new();
+        public ObservableCollection<ArticleSummary> ArticleSummaries { get; set; } = new ();
+
+        private ArticleRepo _repo = new();
 
         public async Task LoadArticle(int id)
         {
@@ -23,9 +27,12 @@ namespace ArticleReviewApp
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ArticleDescription)));
         }
 
-        public async Task LoadAllArticles()
+        public async Task LoadAllArticleSummaries()
         {
-            await _repo.GetAllAsync();
+            var summaries = await _repo.GetAllSummariesAsync();
+            ArticleSummaries.Clear();
+            foreach (var summary in summaries)
+                ArticleSummaries.Add(summary);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
