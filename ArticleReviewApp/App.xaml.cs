@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows;
 using ArticleReviewApp.Repositories;
 using ArticleReviewApp.Data;
+using ArticleReviewApp.Views;
 
 namespace ArticleReviewApp;
 
@@ -23,6 +24,11 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+
+        var login = new LoginWindow();
+
+        bool? result = login.ShowDialog();
+
 
         try
         {

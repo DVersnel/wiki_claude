@@ -22,6 +22,11 @@ public partial class MainWindow : Window
         var vm = new MainWindowViewModel();
         DataContext = vm;
         InitializeComponent();
+
+        Width = SystemParameters.WorkArea.Width * 0.8;
+        Height = SystemParameters.WorkArea.Height * 0.8;
+        WindowStartupLocation = WindowStartupLocation.Manual;
+
         Loaded += async (_, _) =>
         {
             try

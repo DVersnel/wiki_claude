@@ -1,0 +1,28 @@
+<UserControl x:Class="ArticleReviewApp.Views.UserControls.LoginForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ArticleReviewApp.Views.UserControls"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width= "30*"/>
+            <ColumnDefinition Width= "50*"/>
+            <ColumnDefinition Width= "30*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "30*"/>
+            <RowDefinition Height = "30*"/>
+            <RowDefinition Height = "30*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row = "1" Grid.Column = "1">
+            <TextBlock Margin="5"> Enter Username: </TextBlock>
+            <TextBox Margin="5"> </TextBox>
+            <TextBlock Margin="5"> Enter Password: </TextBlock>
+            <PasswordBox Margin="5"> </PasswordBox>
+            <Button Margin="5" Width = "50" Click = "LoginButton_Click"> Login </Button>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>
