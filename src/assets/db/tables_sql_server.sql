@@ -17,6 +17,7 @@ CREATE TABLE users (
     email    VARCHAR(60) NOT NULL,
     password VARCHAR(40) NOT NULL,
     name     VARCHAR(60) NOT NULL,
+    roles    INT NOT NULL CONSTRAINT DF_users_roles DEFAULT 1, -- Role bit flags, see migrations/001_add_roles_sql_server.sql
     CONSTRAINT PK_users PRIMARY KEY (id)
 );
 GO
@@ -41,6 +42,7 @@ CREATE TABLE articles (
     code        VARCHAR(MAX) NOT NULL,
     user_id     INT NOT NULL,
     last_edit   DATETIME2(6) NOT NULL DEFAULT SYSUTCDATETIME(),
+    access_mask INT NOT NULL CONSTRAINT DF_articles_access_mask DEFAULT 15, -- roles allowed to access this row
     CONSTRAINT PK_articles PRIMARY KEY (id),
     CONSTRAINT FK_articles_users FOREIGN KEY (user_id) REFERENCES users (id)
 );

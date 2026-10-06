@@ -21,6 +21,8 @@ public partial class Article
 
     public DateTime LastEdit { get; set; }
 
+    public Role AccessMask { get; set; }
+
     public virtual ICollection<Image> Images { get; set; } = new List<Image>();
 
     public virtual User User { get; set; } = null!;

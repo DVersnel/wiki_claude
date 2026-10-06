@@ -5,10 +5,11 @@ namespace ArticleReviewApp;
 
 public partial class LoginWindow : Window
 {
-    public LoginWindow()
+    public LoginWindow(LoginViewModel vm)
     {
-        var vm = new MainWindowViewModel();
-
+        DataContext = vm;
         InitializeComponent();
+
+        vm.LoginSucceeded += (_, _) => DialogResult = true;
     }
 }

@@ -1,14 +1,4 @@
-﻿using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ArticleReviewApp;
 
 namespace ArticleReviewApp;
 
@@ -17,9 +7,8 @@ namespace ArticleReviewApp;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public MainWindow()
+    public MainWindow(MainWindowViewModel vm)
     {
-        var vm = new MainWindowViewModel();
         DataContext = vm;
         InitializeComponent();
 
@@ -27,16 +16,6 @@ public partial class MainWindow : Window
         Height = SystemParameters.WorkArea.Height * 0.8;
         WindowStartupLocation = WindowStartupLocation.Manual;
 
-        Loaded += async (_, _) =>
-        {
-            try
-            {
-                await vm.LoadAllArticleSummaries();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Failed to load articles");
-            }
-        };
+        Loaded += (_, _) => vm.LoadAllArticleSummariesCommand.Execute(null);
     }
 }

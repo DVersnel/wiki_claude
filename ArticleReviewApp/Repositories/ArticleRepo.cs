@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using ArticleReviewApp.Data;
 using ArticleReviewApp.Models;
 using ArticleReviewApp.Models.Dtos;
@@ -7,19 +8,26 @@ namespace ArticleReviewApp.Repositories;
 
 public class ArticleRepo
 {
-    public async Task<List<Article>> GetAllAsync()
+    // Row-level access check, translated to SQL as: WHERE (access_mask & @roles) <> 0
+    // An article is visible when its access mask shares at least one role bit with the user.
+    private static Expression<Func<Article, bool>> CanAccess(Role roles) =>
+        a => (a.AccessMask & roles) != Role.None;
+
+    public async Task<List<Article>> GetAllAsync(Role roles)
     {
         using var db = DbContextFactory.CreateDbContext();
         return await db.Articles
+            .Where(CanAccess(roles))
             .Include(a => a.User)
             .OrderBy(a => a.Name)
             .ToListAsync();
     }
 
-    public async Task<List<ArticleSummary>> GetAllSummariesAsync()
+    public async Task<List<ArticleSummary>> GetAllSummariesAsync(Role roles)
     {
         using var db = DbContextFactory.CreateDbContext();
         return await db.Articles
+            .Where(CanAccess(roles))
             .OrderBy(a => a.Name)
             .Select(a => new ArticleSummary
             {
@@ -32,19 +40,21 @@ public class ArticleRepo
             .ToListAsync();
     }
 
-    public async Task<Article?> GetByIdAsync(int id)
+    public async Task<Article?> GetByIdAsync(int id, Role roles)
     {
         using var db = DbContextFactory.CreateDbContext();
         return await db.Articles
+            .Where(CanAccess(roles))
             .Include(a => a.Images)
             .Include(a => a.User)
             .FirstOrDefaultAsync(a => a.Id == id);
     }
 
-    public async Task<List<Article>> SearchByNameAsync(string term)
+    public async Task<List<Article>> SearchByNameAsync(string term, Role roles)
     {
         using var db = DbContextFactory.CreateDbContext();
         return await db.Articles
+            .Where(CanAccess(roles))
             .Where(a => EF.Functions.Like(a.Name, $"%{term}%"))
             .OrderBy(a => a.Name)
             .ToListAsync();
@@ -64,10 +74,12 @@ public class ArticleRepo
         await db.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id, Role roles)
     {
         using var db = DbContextFactory.CreateDbContext();
-        var article = await db.Articles.FirstOrDefaultAsync(a => a.Id == id);
+        var article = await db.Articles
+            .Where(CanAccess(roles))
+            .FirstOrDefaultAsync(a => a.Id == id);
         if (article is null)
         {
             return;

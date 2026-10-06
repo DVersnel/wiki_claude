@@ -36,10 +36,10 @@
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="ApproveButton" Content="Approve" Width="80"
-                    Click="ApproveButton_Click" />
-            <Button x:Name="DenyButton" Content="Deny" Width="80" Margin="8,0,0,0" Click="DenyButton_Click" />
-            <Button x:Name="CancelButton" Content="Cancel" Width="80" Margin="24,0,0,0" Click="CancelButton_Click" />
-            <Button x:Name="SaveButton" Content="Save" Width="80" Margin="8,0,0,0" Click="SaveButton_Click"/>
+                    Command="{Binding ApproveCommand}" />
+            <Button x:Name="DenyButton" Content="Deny" Width="80" Margin="8,0,0,0" Command="{Binding RejectCommand}" />
+            <Button x:Name="CancelButton" Content="Cancel" Width="80" Margin="24,0,0,0" Command="{Binding CancelCommand}" />
+            <Button x:Name="SaveButton" Content="Save" Width="80" Margin="8,0,0,0" Command="{Binding SaveCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

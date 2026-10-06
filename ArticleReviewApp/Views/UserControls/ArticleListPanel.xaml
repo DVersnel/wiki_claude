@@ -13,7 +13,7 @@
 
         <ListView x:Name="ArticleListView" Margin="8,0,8,8"
             ItemsSource="{Binding ArticleSummaries}"
-            SelectionChanged="ArticleListView_SelectionChanged">
+            SelectedItem="{Binding SelectedArticle}">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>

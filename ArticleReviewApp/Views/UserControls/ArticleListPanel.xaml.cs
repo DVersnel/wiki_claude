@@ -1,12 +1,7 @@
-using System.Collections.ObjectModel;
-using System.IdentityModel.Tokens.Jwt;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using ArticleReviewApp.Models;
-using ArticleReviewApp.Models.Dtos;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.ComponentModel;
 
 namespace ArticleReviewApp.Views.UserControls
 {
@@ -15,24 +10,10 @@ namespace ArticleReviewApp.Views.UserControls
         public ArticleListPanel()
         {
             InitializeComponent();
-
         }
 
-        private async void ArticleListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ArticleListView.SelectedItem is ArticleSummary selected && DataContext is MainWindowViewModel vm)
-            {
-                try
-                {
-                    await vm.LoadArticle(selected.Id);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString(), "Failed to load article");
-                }
-            }
-        }
-
+        // Column-header sorting is purely a view concern (it only reorders the
+        // CollectionView over the view model's list), so it stays in code-behind.
         private string? _lastSortProperty;
         private ListSortDirection _lastSortDirection;
 

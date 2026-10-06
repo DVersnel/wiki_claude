@@ -69,6 +69,10 @@ public partial class AppDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("text");
             entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.AccessMask)
+                .HasConversion<int>()
+                .HasDefaultValue(Role.All)
+                .HasColumnName("access_mask");
 
             entity.HasOne(d => d.User).WithMany(p => p.Articles)
                 .HasForeignKey(d => d.UserId)
@@ -307,6 +311,9 @@ public partial class AppDbContext : DbContext
                 .HasMaxLength(40)
                 .IsUnicode(false)
                 .HasColumnName("password");
+            entity.Property(e => e.Roles)
+                .HasConversion<int>()
+                .HasColumnName("roles");
         });
 
         OnModelCreatingPartial(modelBuilder);

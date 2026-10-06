@@ -1,9 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
 using System.Windows;
-using ArticleReviewApp.Repositories;
-using ArticleReviewApp.Data;
-using ArticleReviewApp.Views;
 
 namespace ArticleReviewApp;
 
@@ -21,25 +16,23 @@ public partial class App : Application
         };
     }
 
-    protected override async void OnStartup(StartupEventArgs e)
+    protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
 
-        var login = new LoginWindow();
-
-        bool? result = login.ShowDialog();
-
-
-        try
+        // ShutdownMode is OnExplicitShutdown (App.xaml) so closing the login
+        // dialog doesn't end the app before the main window is shown.
+        var loginVm = new LoginViewModel();
+        var login = new LoginWindow(loginVm);
+        if (login.ShowDialog() != true || loginVm.AuthenticatedUser is not { } user)
         {
-            var repo = new ArticleRepo();
-            var articles = await repo.GetAllSummariesAsync();
-            MessageBox.Show($"Loaded {articles.Count} articles.");
+            Shutdown();
+            return;
         }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.ToString());
-        }
+
+        var main = new MainWindow(new MainWindowViewModel(user));
+        MainWindow = main;
+        ShutdownMode = ShutdownMode.OnMainWindowClose;
+        main.Show();
     }
 }
-

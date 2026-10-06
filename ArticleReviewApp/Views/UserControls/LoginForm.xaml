@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ArticleReviewApp.Views.UserControls"
-             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="300">
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="300"
+             FocusManager.FocusedElement="{Binding ElementName=EmailTextBox}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width= "30*"/>
@@ -13,16 +14,21 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height = "30*"/>
-            <RowDefinition Height = "30*"/>
+            <RowDefinition Height = "Auto"/>
             <RowDefinition Height = "30*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row = "1" Grid.Column = "1">
-            <TextBlock Margin="5"> Enter Username: </TextBlock>
-            <TextBox Margin="5"> </TextBox>
-            <TextBlock Margin="5"> Enter Password: </TextBlock>
-            <PasswordBox Margin="5"> </PasswordBox>
-            <Button Margin="5" Width = "50" Click = "LoginButton_Click"> Login </Button>
+            <TextBlock Margin="5">Email:</TextBlock>
+            <TextBox x:Name="EmailTextBox" Margin="5" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Margin="5">Password:</TextBlock>
+            <PasswordBox x:Name="PasswordInput" Margin="5" />
+            <TextBlock Margin="5" Foreground="Firebrick" TextWrapping="Wrap"
+                       Text="{Binding ErrorMessage}"
+                       Visibility="{Binding HasError, Converter={StaticResource BoolToVisibility}}" />
+            <Button Margin="5" Width="70" IsDefault="True"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding ElementName=PasswordInput}">Login</Button>
         </StackPanel>
-        
+
     </Grid>
 </UserControl>
