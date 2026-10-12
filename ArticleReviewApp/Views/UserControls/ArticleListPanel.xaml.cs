@@ -12,8 +12,6 @@ namespace ArticleReviewApp.Views.UserControls
             InitializeComponent();
         }
 
-        // Column-header sorting is purely a view concern (it only reorders the
-        // CollectionView over the view model's list), so it stays in code-behind.
         private string? _lastSortProperty;
         private ListSortDirection _lastSortDirection;
 

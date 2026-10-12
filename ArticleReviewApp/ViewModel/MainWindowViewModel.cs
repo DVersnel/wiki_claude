@@ -40,8 +40,6 @@ namespace ArticleReviewApp
 
         private bool HasArticle => _currentArticle is not null;
 
-        // Selecting a row in the list loads that article into the editor.
-        // Null happens when the list is refreshed; the editor keeps its article then.
         partial void OnSelectedArticleChanged(ArticleSummary? value)
         {
             if (value is not null)
@@ -91,7 +89,6 @@ namespace ArticleReviewApp
             await LoadAllArticleSummaries();
         }
 
-        // Discards unsaved edits by reloading the article from the database.
         [RelayCommand(CanExecute = nameof(HasArticle))]
         private async Task Cancel()
         {

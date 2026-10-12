@@ -2,9 +2,6 @@ using System.Windows;
 
 namespace ArticleReviewApp;
 
-/// <summary>
-/// Interaction logic for App.xaml
-/// </summary>
 public partial class App : Application
 {
     public App()
@@ -20,8 +17,6 @@ public partial class App : Application
     {
         base.OnStartup(e);
 
-        // ShutdownMode is OnExplicitShutdown (App.xaml) so closing the login
-        // dialog doesn't end the app before the main window is shown.
         var loginVm = new LoginViewModel();
         var login = new LoginWindow(loginVm);
         if (login.ShowDialog() != true || loginVm.AuthenticatedUser is not { } user)

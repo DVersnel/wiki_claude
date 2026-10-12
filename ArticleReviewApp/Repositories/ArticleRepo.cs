@@ -8,8 +8,7 @@ namespace ArticleReviewApp.Repositories;
 
 public class ArticleRepo
 {
-    // Row-level access check, translated to SQL as: WHERE (access_mask & @roles) <> 0
-    // An article is visible when its access mask shares at least one role bit with the user.
+    // Row-level access check
     private static Expression<Func<Article, bool>> CanAccess(Role roles) =>
         a => (a.AccessMask & roles) != Role.None;
 

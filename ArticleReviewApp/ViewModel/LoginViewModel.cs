@@ -19,15 +19,10 @@ namespace ArticleReviewApp
 
         public bool HasError => ErrorMessage.Length > 0;
 
-        // Set once login succeeds; read by App to start the main window.
         public User? AuthenticatedUser { get; private set; }
 
-        // Raised on successful login so the view can close itself.
         public event EventHandler? LoginSucceeded;
 
-        // PasswordBox.Password can't be data-bound (by design, so the password
-        // isn't kept in a bindable string), so the view passes the control as
-        // the command parameter instead.
         [RelayCommand]
         private async Task Login(PasswordBox passwordBox)
         {
