@@ -1,0 +1,75 @@
+<UserControl x:Class="ArticleReviewApp.Views.UserControls.UserRolesPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ArticleReviewApp.Views.UserControls"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="720">
+    <Grid Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*" />
+            <ColumnDefinition Width="40*" />
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Column="0" LastChildFill="True">
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,8">
+                <TextBox x:Name="SearchTextBox" Width="220"
+                         Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+                <Button x:Name="SearchButton" Content="Search" Width="70" Margin="8,0,0,0"
+                        Command="{Binding SearchCommand}" />
+            </StackPanel>
+
+            <ListView x:Name="UserListView"
+                      ItemsSource="{Binding Users}"
+                      SelectedItem="{Binding SelectedUser}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Email" Width="160" DisplayMemberBinding="{Binding Email}"/>
+                        <GridViewColumn Header="Roles" Width="140" DisplayMemberBinding="{Binding Roles}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+
+        <Grid Grid.Column="1" Margin="8,0,0,0" IsEnabled="{Binding HasSelectedUser}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="0,0,0,8">
+                <TextBlock Text="User" FontWeight="Bold" />
+                <TextBlock Text="{Binding SelectedUser.Name}" />
+                <TextBlock Text="{Binding SelectedUser.Email}" Foreground="Gray" />
+            </StackPanel>
+
+            <GroupBox Grid.Row="1" Header="Roles" Padding="4">
+                <StackPanel>
+                    <CheckBox x:Name="ReaderCheckBox" Content="Reader" Margin="0,4"
+                              IsChecked="{Binding IsReader}" />
+                    <CheckBox x:Name="ReviewerCheckBox" Content="Reviewer" Margin="0,4"
+                              IsChecked="{Binding IsReviewer}" />
+                    <CheckBox x:Name="EditorCheckBox" Content="Editor" Margin="0,4"
+                              IsChecked="{Binding IsEditor}" />
+                    <CheckBox x:Name="AdminCheckBox" Content="Admin" Margin="0,4"
+                              IsChecked="{Binding IsAdmin}" />
+                </StackPanel>
+            </GroupBox>
+
+            <TextBlock Grid.Row="3" Margin="0,0,0,8" Foreground="Firebrick" TextWrapping="Wrap"
+                       Text="{Binding ErrorMessage}"
+                       Visibility="{Binding HasError, Converter={StaticResource BoolToVisibility}}" />
+
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="SaveButton" Content="Save" Width="80"
+                        Command="{Binding SaveRolesCommand}" />
+                <Button x:Name="ResetButton" Content="Reset" Width="80" Margin="8,0,0,0"
+                        Command="{Binding ResetRolesCommand}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
